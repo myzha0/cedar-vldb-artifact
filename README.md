@@ -1,7 +1,7 @@
 # cedar-vldb-artifact
 
 cedar (referred to as ember in this artifact) is an optimized and unified programming framework for ML input data pipelines.
-This repository holds the artifact for cedar for its submission to VLDB vol. 18.
+This repository holds the artifact for cedar for its submission to PVLDB vol. 18.
 
 ## Setup
 To setup cedar and its dependencies, begin by making sure that you have Python>=3.9 installed, as well as `pip` and `venv`.
