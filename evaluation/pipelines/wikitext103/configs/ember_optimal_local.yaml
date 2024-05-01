@@ -1,0 +1,53 @@
+physical_plan:
+  graph:
+    0: ''
+    1: '0'
+    9: '4'
+    8: '9'
+    2: '1'
+    3: '2'
+    4: '3'
+    # 5: '4'
+    # 6: '5'
+    # 7: '6'
+    # 8: '7'
+  pipes:
+    0:
+      name: BatcherPipe(batch_size=1)
+      variant: INPROCESS
+    1:
+      name: MapperPipe_Embedding(50257, 764)
+      variant: INPROCESS
+    2:
+      name: MapperPipe_ToTensor()
+      variant: INPROCESS
+    3:
+      name: MapperPipe_AddToken()
+      variant: INPROCESS
+    4:
+      name: MapperPipe_AddToken()
+      variant: INPROCESS
+    5:
+      name: "MapperPipe_VocabTransform(\n  (vocab): Vocab()\n)"
+      variant: INPROCESS
+    6:
+      name: MapperPipe_Truncate()
+      variant: INPROCESS
+    7:
+      name: MapperPipe_GPT2BPETokenizer()
+      variant: SMP
+      variant_ctx:
+        n_procs: 10
+    8:
+      name: LocalLinePipe
+      variant: INPROCESS
+    9:
+      name: FusedPipe
+      variant: SMP
+      variant_ctx:
+        n_procs: 8
+      fused_pipes:
+        - 7
+        - 6
+        - 5
+  n_local_workers: 1

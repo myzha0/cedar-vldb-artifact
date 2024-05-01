@@ -1,0 +1,17 @@
+﻿Pipeline,System,Run 1,Run 2,Run 3,Average,Command
+CV-torch,ember-remote,11.658,10.68,11.008,11.11533333,python eval_ember.py --dataset_file pipelines/simclrv2/ember_remote_dataset.py --profiled_stats pipelines/simclrv2/stats/ember_remote.yaml --master_feature_config pipelines/simclrv2/configs/eval_ember_remote.yaml --use_ray --ray_ip 10.138.0.8
+CV-tf,ember-remote,9.078,10.773,9.583,9.811333333,python eval_ember.py --dataset_file pipelines/simclrv2/ember_tf_dataset.py --profiled_stats pipelines/simclrv2/stats/ember_tf_stats.yaml --master_feature_config pipelines/simclrv2/configs/eval_ember_remote_tf.yaml --use_ray --ray_ip 10.138.0.8
+NLP-torch,ember-remote,20.857,21.093,21.016,20.98866667,python eval_ember.py --dataset_file pipelines/wikitext103/ember_dataset.py --profiled_stats pipelines/wikitext103/stats/ember.yaml --use_ray --ray_ip 10.138.0.8 --num_total_samples 100000 --master_feature_config pipelines/wikitext103/configs/eval_remote.yaml
+NLP-hf-tf,ember-remote,41.827,40.814,41.942,41.52766667,python eval_ember.py --dataset_file pipelines/wikitext103/ember_tf_dataset.py --profiled_stats pipelines/wikitext103/stats/tf.yaml --master_feature_config pipelines/wikitext103/configs/eval_remote_tf.yaml --use_ray --ray_ip 10.138.0.8 --num_total_samples 100000
+NLP-tf,ember-remote,36.168,35.884,35.796,35.94933333,python eval_ember.py --dataset_file pipelines/wikitext103/ember_tf_service_dataset.py --profiled_stats pipelines/wikitext103/stats/tf_service.yaml --master_feature_config pipelines/wikitext103/configs/eval_remote_tf_service.yaml --use_ray --ray_ip 10.138.0.8 --num_total_samples 200000
+ASR,ember-remote,19.355,21.248,19.526,20.043,python eval_ember.py --dataset_file pipelines/commonvoice/ember_dataset.py --profiled_stats pipelines/commonvoice/stats/ember.yaml --master_feature_config pipelines/commonvoice/configs/eval_remote.yaml --num_total_samples 10000
+CV-torch,ray-remote,15.52957302,15.47486057,15.28077261,15.42840206,python pipelines/simclrv2/ray_dataset.py
+CV-tf,ray-remote,17.55010958,17.99313649,16.29286368,17.27870325,python pipelines/simclrv2/ray_tf_dataset.py
+NLP-torch,ray-remote,60.72895274,55.92241504,88.07885755,68.24340845,python pipelines/wikitext103/ray_dataset.py
+NLP-hf-tf,ray-remote,105.635,205.4756313,64.39220593,125.1676124,python pipelines/wikitext103/ray_tf_dataset.py
+NLP-tf,ray-remote,93.08470007,93.30376357,105.8545312,97.41433161,python pipelines/wikitext103/ray_tf_service_dataset.py
+ASR,ray-remote,19.00199202,20.26989781,20.04224397,19.77137793,python pipelines/commonvoice/ray_dataset.py
+CV-tf,tfdata-service,10.198,9.375,10.403,9.992,python eval_tf.py --dataset_file pipelines/simclrv2/tf_dataset.py --service_addr 10.138.0.90:38655 --num_parallel_calls -1
+NLP-tf,tfdata-service,97.912,99.076,96.289,97.759,N/A
+CV-tf,fastflow,11.25675988,13.25808001,12.25636983,12.25706991,python eval_app_runner.py simclr_app.py simclr ff config.yaml
+NLP-tf,fastflow,123.47984,123.40487,125.6143,124.1663367,python eval_app_runner.py nlp_app.py nlp ff config.yaml

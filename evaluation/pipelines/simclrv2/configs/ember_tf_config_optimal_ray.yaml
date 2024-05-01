@@ -1,0 +1,65 @@
+physical_plan:
+  graph:
+    10: '9'
+    9: '11'
+    11: '12'
+    12: '0'
+    0: ''
+  pipes:
+    0:
+      name: BatcherPipe(batch_size=8)
+      variant: INPROCESS
+    1:
+      name: MapperPipe_per_image_standardization
+      variant: TF
+    2:
+      name: MapperPipe_gaussian_blur
+      variant: TF
+    3:
+      name: MapperPipe_rgb_to_grayscale
+      variant: TF
+    4:
+      name: MapperPipe_color_jitter
+      variant: TF
+    5:
+      name: MapperPipe_random_flip
+      variant: TF
+    6:
+      name: MapperPipe_crop_and_resize
+      variant: TF
+    7:
+      name: MapperPipe_convert_to_float
+      variant: TF
+    8:
+      name: MapperPipe_decode_jpeg
+      variant: TF
+    9:
+      name: MapperPipe_read_file
+      variant: TF
+    10:
+      name: LocalFSListerPipe
+      variant: INPROCESS
+    11:
+      name: FusedPipe
+      variant: TF_RAY
+      variant_ctx: 
+        n_actors: 4
+        max_inflight: 75
+        use_threads: True
+        max_prefetch: 100
+        submit_batch_size: 20
+      fused_pipes: 
+        - 8
+        - 6
+        - 3
+        - 5
+        - 4
+        - 2
+    12:
+      name: FusedPipe
+      variant: TF
+      fused_pipes: 
+        - 7
+        - 1
+
+  n_local_workers: 7

@@ -1,0 +1,37 @@
+physical_plan:
+  graph:
+    0: ''
+    # 1: '0'
+    # 2: '1'
+    # 3: '2'
+    # 4: '3'
+    4: '5'
+    5: '0'
+  pipes:
+    0:
+      name: MapperPipe__embedding
+      variant: INPROCESS
+    1:
+      name: MapperPipe__truncate
+      variant: INPROCESS
+    2:
+      name: MapperPipe__tokenize
+      variant: INPROCESS
+    3:
+      name: MapperPipe_convert_to_tensor_v2_with_dispatch
+      variant: INPROCESS
+    4:
+      name: LocalLinePipe
+      variant: INPROCESS
+    5:
+      name: FusedPipe
+      fused_pipes:
+        - 3
+        - 2
+        - 1
+      variant: RAY
+      variant_ctx:
+        n_actors: 12
+        max_inflight: 5000
+        max_prefetch: 5000
+        submit_batch_size: 500

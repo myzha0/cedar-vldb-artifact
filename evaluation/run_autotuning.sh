@@ -1,0 +1,5 @@
+#!/bin/bash 
+python eval_ember.py --dataset_file pipelines/simclrv2/ember_controller_dataset.py --master_feature_config pipelines/simclrv2/configs/eval_controller_remote.yaml --use_ray --ray_ip 10.138.0.7 --num_epochs 5 --iteration_time 0.05
+python eval_ember.py --dataset_file pipelines/simclrv2/ember_controller_dataset.py --master_feature_config pipelines/simclrv2/configs/eval_controller_remote.yaml --use_ray --ray_ip 10.138.0.7 --num_epochs 5 --iteration_time 0.01
+python eval_ember.py --dataset_file pipelines/simclrv2/ember_controller_dataset.py --master_feature_config pipelines/simclrv2/configs/eval_controller_remote.yaml --use_ray --ray_ip 10.138.0.7 --num_epochs 5 --iteration_time 0.005
+python eval_ember.py --dataset_file pipelines/simclrv2/ember_controller_dataset.py --master_feature_config pipelines/simclrv2/configs/eval_controller_remote.yaml --use_ray --ray_ip 10.138.0.7 --num_epochs 5 

@@ -1,0 +1,1 @@
+{"num_epochs": 4, "batch_size": 8, "num_total_samples": null, "epoch_run_times": [12.23322734500016, 12.465073402999906, 13.892367851000017, 15.517108504999896], "epoch_num_samples": [9472, 9472, 9472, 9472]}

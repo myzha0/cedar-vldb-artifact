@@ -1,0 +1,55 @@
+physical_plan:
+  graph:
+    # 0: ''
+    # 1: '0'
+    # 2: '1'
+    # 3: '2'
+    # 4: '3'
+    # 5: '4'
+    # 6: '5'
+    # 7: '6'
+    7: '6'
+    6: '8'
+    8: '0'
+    0: ''
+  pipes:
+    0:
+      name: MapperPipe_mel
+      variant: INPROCESS
+    1:
+      name: MapperPipe_frequency_mask
+      variant: INPROCESS
+    2:
+      name: MapperPipe_time_mask
+      variant: INPROCESS
+    3:
+      name: MapperPipe__stretch
+      variant: INPROCESS
+    4:
+      name: MapperPipe__spec
+      variant: INPROCESS
+    5:
+      name: MapperPipe__resample
+      variant: INPROCESS
+    6:
+      name: MapperPipe__read
+      variant: INPROCESS
+    7:
+      name: LocalFSListerPipe
+      variant: INPROCESS
+    8:
+      name: FusedPipe
+      variant: RAY
+      fused_pipes:
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+      variant_ctx: 
+        n_actors: 4
+        max_inflight: 75
+        use_threads: True
+        max_prefetch: 100
+        submit_batch_size: 10
+  n_local_workers: 7

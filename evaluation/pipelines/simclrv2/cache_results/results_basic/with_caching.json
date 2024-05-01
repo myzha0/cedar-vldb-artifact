@@ -1,0 +1,1 @@
+{"num_epochs": 4, "batch_size": 8, "num_total_samples": null, "epoch_run_times": [13.792572861000053, 7.756440891000011, 8.175201431000005, 8.147601161000011], "epoch_num_samples": [9472, 9472, 9472, 9472], "cached_data_size": 2159188652}

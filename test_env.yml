@@ -1,0 +1,23 @@
+name: ember
+channels:
+  - defaults
+  - pytorch
+  - conda-forge
+  - anaconda
+dependencies:
+  - python=3.9
+  - pytorch::cpuonly
+  - pytorch::torchvision
+  - pytorch::torchtext
+  - pytorch::pytorch
+  - pytorch::torchaudio
+  - pytorch::torchdata
+  - anaconda::pytest
+  - conda-forge::pytest-mock
+  - pyyaml
+  - conda-forge::pympler
+  - tensorflow
+  - pip
+  - pip:
+    - responses 
+    - ray[default]
